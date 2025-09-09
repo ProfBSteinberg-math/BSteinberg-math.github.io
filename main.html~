@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+  <meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-1">
+  <meta name="GENERATOR"
+ content="Mozilla/4.76 [en] (X11; U; Linux 2.2.17-14smp i686) [Netscape]">
+  <meta name="Author" content="Benjamin Steinberg">
+  <meta name="Keywords"
+ content="Benjamin Steinberg, mathematics, semigroups, groups, monoids, automata">
+  <meta name="Description"
+ content="This page contains my various   mathematical preprints and publications.">
+  <meta name="Classification"
+ content="mathematics, semigroups, groups, monoids, automata.">
+  <title>Benjamin Steinberg's Home Page</title>
+  <link ="#0000FF" vlink="#9E0061" alink="#FF0000" nosave="">
+</head>
+<body bgcolor="#0000cc">
+<table style="background-color:rgb(32,102,102)" cellpadding="5" cellspacing="2" border="1" cols="2">
+<tbody>
+ <tr>
+<td style="background-color:rgb(63,153,153)" align="center"><img src="BENmatrix.jpg"  nosave=""
+  border="0"></td>
+<td style="background-color:rgb(63,153,153)">
+<h2>About Me:</h2>
+<span style="font-family: courier new,courier,monospace;">
+  <table nosave="" cellpadding="5" cellspacing="15" cols="1">
+    <tbody>
+<tr nosave="">
+        <td nosave="">I received my Ph.D. at the University of California at Berkeley.
+</td>
+      </tr>
+
+      <tr nosave="">
+        <td nosave="">I am an algebraist interested in a broad range of areas.  I've worked on semigroups, geometric group theory, representation theory, self-similar groups (aka automaton groups), profinite groups and random walks on semigroups and groups.  I've been particularly interested in interactions between these areas and Computer Science and am fond of algorithmic questions.  I've also dabbled with operator algebras associated to etale groupoids and inverse semigroups.  Currently, I am interested in applications of finite semigroup theory to finite state Markov chains. 
+</td>
+      </tr>
+<tr>
+<td>Here is my Curriculum Vitae in <a href="newvitae.pdf">PDF</a>.
+</td>
+</tr>
+       </tbody>
+  </table>
+</span>
+</td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>

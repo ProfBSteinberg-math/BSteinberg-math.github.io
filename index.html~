@@ -1,0 +1,44 @@
+<HTML>
+<HEAD>
+<TITLE>Benjamin Steinberg's Home Page</TITLE>
+</HEAD>
+<FRAMESET BORDER=3 FRAMESPACING=3 FRAMEBORDER=3 COLS="145,*">
+            
+   <FRAMESET BORDER=3 FRAMESPACING=3 FRAMEBORDER=3 ROWS="120,*">
+
+        <FRAME  
+	        noresize
+	        scrolling="no"
+                SRC="name.html"
+                NAME="name">
+
+        <FRAME  
+	        noresize
+                scrolling="no"
+		SRC="left.html"
+                NAME="left">
+   
+	
+
+      </FRAMESET></A> 
+
+<FRAMESET BORDER=3 FRAMESPACING=3 FRAMEBORDER=3 ROWS="120,*">
+   
+      <FRAME  
+                noresize
+                scrolling="no"
+                SRC="header.html"
+                NAME="header">
+      <FRAME
+           noresize
+	   SRC="main.html"
+           NAME="right">
+      </FRAMESET></A>
+
+</FRAMESET>
+
+
+
+
+
+
