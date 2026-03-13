@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="Author" content="Benjamin Steinberg">
+  <meta name="Keywords" content="Benjamin Steinberg, mathematics, semigroups, groups, monoids, automata">
+  <meta name="Description" content="Books by Benjamin Steinberg, Distinguished Professor of Mathematics at City College of New York.">
+  <title>Benjamin Steinberg — Books</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #1a1a1a;
+      --paper: #f9f6f0;
+      --cream: #f0ead8;
+      --rule: #c8bfa8;
+      --accent: #5c3d1e;
+      --accent-light: #8a6040;
+      --muted: #7a7060;
+      --highlight: #e8dcc8;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 1.05rem;
+      line-height: 1.75;
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: '';
+      display: block;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent) 0%, var(--accent-light) 50%, var(--accent) 100%);
+    }
+
+    .page {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 2rem 4rem;
+    }
+
+    /* ── Header ── */
+    header {
+      padding: 3.5rem 0 2rem;
+      border-bottom: 1px solid var(--rule);
+      margin-bottom: 0;
+    }
+
+    .name {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 2.6rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: var(--accent);
+      line-height: 1.1;
+      margin-bottom: 0.25rem;
+    }
+
+    .title-line {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      font-weight: 300;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ── Nav ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: var(--cream);
+      border-bottom: 1px solid var(--rule);
+      border-top: 1px solid var(--rule);
+      padding: 0.75rem 2rem;
+      margin: 0 -2rem 3rem;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.25rem 0.1rem;
+    }
+
+    nav li a {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      text-decoration: none;
+      padding: 0.3rem 0.75rem;
+      border-radius: 2px;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    nav li a:hover, nav li a.active {
+      background: var(--highlight);
+      color: var(--ink);
+    }
+
+    nav li + li::before {
+      content: '·';
+      color: var(--rule);
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+
+    /* ── Sections ── */
+    section { margin-bottom: 3.5rem; }
+
+    .section-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--rule);
+    }
+
+    h2 {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+
+    p { margin-bottom: 1rem; color: var(--ink); }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+
+    a:hover { border-bottom-color: var(--accent-light); }
+
+    /* ── Book entries ── */
+    .book-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .book-entry {
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      gap: 1.5rem 2rem;
+      padding: 2rem 0;
+      border-bottom: 1px solid var(--rule);
+      align-items: start;
+    }
+
+    .book-entry:last-child { border-bottom: none; }
+
+    .book-cover {
+      position: relative;
+    }
+
+    .book-cover a {
+      display: block;
+      border-bottom: none;
+    }
+
+    .book-cover img {
+      width: 100%;
+      display: block;
+      border: 1px solid var(--rule);
+      filter: sepia(5%) contrast(1.03);
+      box-shadow: 3px 3px 0 var(--rule);
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+
+    .book-cover a:hover img {
+      box-shadow: 5px 5px 0 var(--accent-light);
+      transform: translate(-1px, -1px);
+    }
+
+    .book-info {
+      padding-top: 0.25rem;
+    }
+
+    .book-title {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 0.4rem;
+      line-height: 1.4;
+    }
+
+    .book-title a {
+      color: var(--accent);
+      border-bottom: none;
+    }
+
+    .book-title a:hover {
+      border-bottom: 1px solid var(--accent-light);
+    }
+
+    .book-meta {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+
+    .book-desc {
+      font-size: 0.97rem;
+      color: var(--ink);
+      line-height: 1.65;
+      margin-bottom: 0;
+    }
+
+    .book-link {
+      display: inline-block;
+      margin-top: 0.6rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border-bottom: 1px solid var(--accent-light);
+    }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--rule);
+      padding-top: 1.5rem;
+      text-align: center;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    /* ── Animations ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    header  { animation: fadeUp 0.6s ease both; }
+    nav     { animation: fadeUp 0.6s 0.1s ease both; }
+    section { animation: fadeUp 0.6s 0.2s ease both; }
+
+    @media (max-width: 560px) {
+      .name { font-size: 2rem; }
+      .book-entry { grid-template-columns: 80px 1fr; gap: 1rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <div class="name">Benjamin Steinberg</div>
+    <div class="title-line">Distinguished Professor of Mathematics &nbsp;·&nbsp; City College of New York</div>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="https://profbsteinberg-math.github.io/BSteinberg-math.github.io/">Home</a></li>
+      <li><a href="contact2.html">Contact</a></li>
+      <li><a href="pub2.html">Publications</a></li>
+      <li><a href="book2.html" class="active">Books</a></li>
+      <li><a href="journals2.html">Editorial Work</a></li>
+      <li><a href="conferences2.html">Conferences</a></li>
+      <li><a href="newvitae.pdf">Curriculum Vitæ</a></li>
+      <li><a href="http://math.sci.ccny.cuny.edu/people?name=Benjamin_Steinberg">Classes</a></li>
+      <li><a href="http://bensteinberg.wordpress.com/author/bsteinbg/">Blog</a></li>
+    </ul>
+  </nav>
+
+  <section>
+    <div class="section-label">Books</div>
+    <h2>Books</h2>
+
+    <div class="book-list">
+
+      <div class="book-entry">
+        <div class="book-cover">
+          <a href="http://www.springer.com/mathematics/algebra/book/978-0-387-09780-0">
+            <img src="qtheory.jpg" alt="q-theory of Finite Semigroups">
+          </a>
+        </div>
+        <div class="book-info">
+          <div class="book-title">
+            <a href="http://www.springer.com/mathematics/algebra/book/978-0-387-09780-0">The <em>q</em>-theory of Finite Semigroups</a>
+          </div>
+          <div class="book-meta">Springer · Monographs in Mathematics · 2009</div>
+          <div class="book-desc">John Rhodes and Benjamin Steinberg.</div>
+          <a class="book-link" href="qtheor/erratum.pdf">Known Errata (PDF)</a>
+        </div>
+      </div>
+
+      <div class="book-entry">
+        <div class="book-cover">
+          <a href="http://www.springer.com/mathematics/algebra/book/978-1-4614-0775-1?detailsPage=authorsAndEditors">
+            <img src="reptheory.jpg" alt="Representation Theory of Finite Groups">
+          </a>
+        </div>
+        <div class="book-info">
+          <div class="book-title">
+            <a href="http://www.springer.com/mathematics/algebra/book/978-1-4614-0775-1?detailsPage=authorsAndEditors">Representation Theory of Finite Groups: An Introductory Approach</a>
+          </div>
+          <div class="book-meta">Springer · Universitext · 2011</div>
+          <div class="book-desc">Benjamin Steinberg.</div>
+        </div>
+      </div>
+
+      <div class="book-entry">
+        <div class="book-cover">
+          <a href="http://link.springer.com/book/10.1007%2F978-1-4939-0938-4">
+            <img src="FieldsBook.jpg" alt="Algebraic Monoids, Group Embeddings, and Algebraic Combinatorics">
+          </a>
+        </div>
+        <div class="book-info">
+          <div class="book-title">
+            <a href="http://link.springer.com/book/10.1007%2F978-1-4939-0938-4">Algebraic Monoids, Group Embeddings, and Algebraic Combinatorics</a>
+          </div>
+          <div class="book-meta">Springer · Fields Institute Communications Vol. 71 · 2014</div>
+          <div class="book-desc">Mahir Can, Zhenheng Li, Benjamin Steinberg, Qiang Wang (eds.).</div>
+        </div>
+      </div>
+
+      <div class="book-entry">
+        <div class="book-cover">
+          <a href="http://www.springer.com/us/book/9783319439303#aboutBook">
+            <img src="bookcover.jpg" alt="Representation Theory of Finite Monoids">
+          </a>
+        </div>
+        <div class="book-info">
+          <div class="book-title">
+            <a href="http://www.springer.com/us/book/9783319439303#aboutBook">Representation Theory of Finite Monoids</a>
+          </div>
+          <div class="book-meta">Springer · Universitext · 2016</div>
+          <div class="book-desc">Benjamin Steinberg.</div>
+        </div>
+      </div>
+
+      <div class="book-entry">
+        <div class="book-cover">
+          <a href="https://www.degruyterbrill.com/document/doi/10.1515/9783110984323/html?lang=en&srsltid=AfmBOooWk8GBsHKm9TLwASRrOfAu4I82fDWoU_euAZsXcI3mWKhfmJEY">
+            <img src="GAGTA.jpg" alt="Languages and Automata: GAGTA Book 3">
+          </a>
+        </div>
+        <div class="book-info">
+          <div class="book-title">
+            <a href="https://www.degruyterbrill.com/document/doi/10.1515/9783110984323/html?lang=en&srsltid=AfmBOooWk8GBsHKm9TLwASRrOfAu4I82fDWoU_euAZsXcI3mWKhfmJEY">Languages and Automata: GAGTA Book 3</a>
+          </div>
+          <div class="book-meta">De Gruyter · 2024</div>
+          <div class="book-desc">B. Steinberg (ed.).</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    Benjamin Steinberg &nbsp;·&nbsp; Department of Mathematics &nbsp;·&nbsp; City College of New York
+  </footer>
+
+</div>
+</body>
+</html>
