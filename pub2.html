@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="Author" content="Benjamin Steinberg">
+  <meta name="Keywords" content="Benjamin Steinberg, mathematics, semigroups, groups, monoids, automata">
+  <meta name="Description" content="Selected publications of Benjamin Steinberg, Distinguished Professor of Mathematics at City College of New York.">
+  <title>Benjamin Steinberg — Publications</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #1a1a1a;
+      --paper: #f9f6f0;
+      --cream: #f0ead8;
+      --rule: #c8bfa8;
+      --accent: #5c3d1e;
+      --accent-light: #8a6040;
+      --muted: #7a7060;
+      --highlight: #e8dcc8;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 1.05rem;
+      line-height: 1.75;
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: '';
+      display: block;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent) 0%, var(--accent-light) 50%, var(--accent) 100%);
+    }
+
+    .page {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 2rem 4rem;
+    }
+
+    /* ── Header ── */
+    header {
+      padding: 3.5rem 0 2rem;
+      border-bottom: 1px solid var(--rule);
+      margin-bottom: 0;
+    }
+
+    .name {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 2.6rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: var(--accent);
+      line-height: 1.1;
+      margin-bottom: 0.25rem;
+    }
+
+    .title-line {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      font-weight: 300;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ── Nav ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: var(--cream);
+      border-bottom: 1px solid var(--rule);
+      border-top: 1px solid var(--rule);
+      padding: 0.75rem 2rem;
+      margin: 0 -2rem 3rem;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.25rem 0.1rem;
+    }
+
+    nav li a {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      text-decoration: none;
+      padding: 0.3rem 0.75rem;
+      border-radius: 2px;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    nav li a:hover, nav li a.active {
+      background: var(--highlight);
+      color: var(--ink);
+    }
+
+    nav li + li::before {
+      content: '·';
+      color: var(--rule);
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+
+    /* ── Sections ── */
+    section { margin-bottom: 3.5rem; }
+
+    .section-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--rule);
+    }
+
+    h2 {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+
+    p { margin-bottom: 1rem; color: var(--ink); }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+
+    a:hover { border-bottom-color: var(--accent-light); }
+
+    /* ── Publication list ── */
+    .pub-list {
+      list-style: none;
+      counter-reset: pub-counter;
+    }
+
+    .pub-list li {
+      counter-increment: pub-counter;
+      position: relative;
+      padding: 1.1rem 0 1.1rem 3rem;
+      border-bottom: 1px solid var(--rule);
+      font-size: 1rem;
+      line-height: 1.65;
+    }
+
+    .pub-list li:last-child { border-bottom: none; }
+
+    .pub-list li::before {
+      content: counter(pub-counter);
+      position: absolute;
+      left: 0;
+      top: 1.1rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--muted);
+      width: 2rem;
+      text-align: right;
+    }
+
+    .pub-list em, .pub-list i {
+      font-style: italic;
+      color: var(--ink);
+    }
+
+    .pub-list strong, .pub-list b {
+      font-weight: 600;
+    }
+
+    /* ── Links bar ── */
+    .links-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 2rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--paper);
+      background: var(--accent);
+      border: 1px solid var(--accent);
+      padding: 0.55rem 1.1rem;
+      text-decoration: none;
+      border-bottom: none;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .btn:hover {
+      background: var(--ink);
+      border-color: var(--ink);
+      border-bottom: none;
+    }
+
+    .btn-ghost {
+      color: var(--accent);
+      background: transparent;
+      border: 1px solid var(--accent);
+    }
+
+    .btn-ghost:hover {
+      background: var(--accent);
+      color: var(--paper);
+      border-bottom: none;
+    }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--rule);
+      padding-top: 1.5rem;
+      text-align: center;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    /* ── Animations ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    header  { animation: fadeUp 0.6s ease both; }
+    nav     { animation: fadeUp 0.6s 0.1s ease both; }
+    section { animation: fadeUp 0.6s 0.2s ease both; }
+
+    @media (max-width: 620px) {
+      .name { font-size: 2rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <div class="name">Benjamin Steinberg</div>
+    <div class="title-line">Distinguished Professor of Mathematics &nbsp;·&nbsp; City College of New York</div>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="https://profbsteinberg-math.github.io/BSteinberg-math.github.io/">Home</a></li>
+      <li><a href="contact2.html">Contact</a></li>
+      <li><a href="pub2.html" class="active">Publications</a></li>
+      <li><a href="book2.html">Books</a></li>
+      <li><a href="journals2.html">Editorial Work</a></li>
+      <li><a href="conferences2.html">Conferences</a></li>
+      <li><a href="newvitae.pdf">Curriculum Vitæ</a></li>
+      <li><a href="http://math.sci.ccny.cuny.edu/people?name=Benjamin_Steinberg">Classes</a></li>
+      <li><a href="http://bensteinberg.wordpress.com/author/bsteinbg/">Blog</a></li>
+    </ul>
+  </nav>
+
+  <section>
+    <div class="section-label">Selected Publications</div>
+    <h2>Selected Publications</h2>
+
+    <ol class="pub-list">
+      <li>E. Gardella, V. Nekrashevych, B. Steinberg and A. Vdovina, <em>Simplicity of C*-algebras of contracting self-similar groups</em>, Commun. Math. Phys. <strong>406</strong>, No. 10, Paper No. 251, 17 p. (2025).</li>
+      <li>B. Steinberg and N. Szakacs, <em>On the simplicity of Nekrashevych algebras of contracting self-similar groups</em>, Math. Ann. <strong>386</strong> (2023), 1391–1428.</li>
+      <li>B. Armstrong, G. G. de Castro, L. O. Clark, K. Courtney, Y. F. Lin, K. McCormick, J. Ramagge, A. Sims and B. Steinberg, <em>Reconstruction of twisted Steinberg algebras</em>, Int. Math. Res. Not. IMRN (2023), 2474–2542.</li>
+      <li>R. Gray and B. Steinberg, <em>A Lyndon's identity theorem for one-relator monoids</em>, Selecta Math. (N.S.) <strong>28</strong> (2022), no. 3, Paper No. 59.</li>
+      <li>S. W. Margolis, F. Saliola and B. Steinberg, <em>Cell complexes, poset topology and the representation theory of algebras arising in algebraic combinatorics and discrete geometry</em>, Mem. Amer. Math. Soc. <strong>274</strong> (2021), no. 1345, iii–135.</li>
+      <li>B. Steinberg and N. Szakacs, <em>Simplicity of inverse semigroup and etale groupoid algebras</em>, Adv. in Math. <strong>380</strong> (2021), 107611.</li>
+      <li>S. J. v. Gool and B. Steinberg, <em>Pointlike sets for varieties determined by groups</em>, Adv. in Math. <strong>348</strong> (2019), 18–50.</li>
+      <li>S. W. Margolis, F. Saliola and B. Steinberg, <em>Combinatorial topology and the global dimension of algebras arising in combinatorics</em>, J. Eur. Math. Soc. <strong>17</strong> (2015), 3037–3080.</li>
+      <li>S. W. Margolis and B. Steinberg, <em>Quivers of monoids with basic algebras</em>, Compositio Mathematica <strong>148</strong> (2012), 1516–1560.</li>
+      <li>K. Henckell, J. Rhodes and B. Steinberg, <em>An effective lower bound for group complexity of finite semigroups and automata</em>, Trans. Amer. Math. Soc. <strong>364</strong> (2012), 1815–1857.</li>
+      <li>A. Costa and B. Steinberg, <em>Profinite groups associated to sofic shifts are free</em>, Proc. London Math. Soc. <strong>102</strong> (2011), 370–394.</li>
+      <li>B. Steinberg, <em>A groupoid approach to discrete inverse semigroup algebras</em>, Adv. in Math. <strong>223</strong> (2010), 689–727.</li>
+      <li>J. Almeida, S. W. Margolis, B. Steinberg and M. V. Volkov, <em>Representation theory of finite semigroups, semigroup radicals and formal language theory</em>, Trans. Amer. Math. Soc. <strong>361</strong> (2009), 1429–1461.</li>
+      <li>B. Steinberg, <em>Möbius functions and semigroup representation theory II: Character formulas and multiplicities</em>, Adv. in Math. <strong>217</strong> (2008), 1521–1557.</li>
+      <li>J. Rhodes and B. Steinberg, <em>Closed subgroups of free profinite monoids are projective profinite groups</em>, Bulletin of the London Math. Soc. <strong>40</strong> (2008), 375–383.</li>
+      <li>K. Auinger and B. Steinberg, <em>Varieties of finite supersolvable groups with the M. Hall property</em>, Math. Ann. <strong>335</strong> (2006), 853–877.</li>
+      <li>K. Auinger and B. Steinberg, <em>The geometry of profinite graphs with applications to free groups and finite monoids</em>, Trans. Amer. Math. Soc. <strong>356</strong> (2004), 805–851.</li>
+      <li>B. Steinberg, <em>Finite state automata: A geometric approach</em>, Trans. Amer. Math. Soc. <strong>353</strong> (2001), 3409–3464.</li>
+    </ol>
+
+    <div class="links-bar">
+      <a class="btn" href="http://arxiv.org/find/math/1/au:+Steinberg_B/0/1/0/all/0/1">arXiv Preprints →</a>
+      <a class="btn btn-ghost" href="https://bsteinberg.ccny.cuny.edu/Webpage/newvitae.pdf">Full CV (PDF)</a>
+      <a class="btn btn-ghost" href="https://bsteinberg.ccny.cuny.edu/Webpage/recentslides.html">Recent Slides →</a>
+    </div>
+
+    <p style="margin-top:1.5rem; font-style:italic; color:var(--muted); font-size:0.95rem;">
+      Most recent papers are available on the arXiv. Electronic copies of other papers can be sent on request.
+    </p>
+  </section>
+
+  <footer>
+    Benjamin Steinberg &nbsp;·&nbsp; Department of Mathematics &nbsp;·&nbsp; City College of New York
+  </footer>
+
+</div>
+</body>
+</html>
