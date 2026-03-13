@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="Author" content="Benjamin Steinberg">
+  <meta name="Keywords" content="Benjamin Steinberg, mathematics, semigroups, groups, monoids, automata">
+  <meta name="Description" content="Selected talks by Benjamin Steinberg, Distinguished Professor of Mathematics at City College of New York.">
+  <title>Benjamin Steinberg — Selected Talks</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #1a1a1a;
+      --paper: #f9f6f0;
+      --cream: #f0ead8;
+      --rule: #c8bfa8;
+      --accent: #5c3d1e;
+      --accent-light: #8a6040;
+      --muted: #7a7060;
+      --highlight: #e8dcc8;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 1.05rem;
+      line-height: 1.75;
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: '';
+      display: block;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent) 0%, var(--accent-light) 50%, var(--accent) 100%);
+    }
+
+    .page {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 2rem 4rem;
+    }
+
+    header {
+      padding: 3.5rem 0 2rem;
+      border-bottom: 1px solid var(--rule);
+      margin-bottom: 0;
+    }
+
+    .name {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 2.6rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: var(--accent);
+      line-height: 1.1;
+      margin-bottom: 0.25rem;
+    }
+
+    .title-line {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      font-weight: 300;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: var(--cream);
+      border-bottom: 1px solid var(--rule);
+      border-top: 1px solid var(--rule);
+      padding: 0.75rem 2rem;
+      margin: 0 -2rem 3rem;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.25rem 0.1rem;
+    }
+
+    nav li a {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      text-decoration: none;
+      padding: 0.3rem 0.75rem;
+      border-radius: 2px;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    nav li a:hover, nav li a.active {
+      background: var(--highlight);
+      color: var(--ink);
+    }
+
+    nav li + li::before {
+      content: '·';
+      color: var(--rule);
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+
+    section { margin-bottom: 3.5rem; }
+
+    .section-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--rule);
+    }
+
+    h2 {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+
+    a:hover { border-bottom-color: var(--accent-light); }
+
+    .talk-list { list-style: none; }
+
+    .talk-item {
+      position: relative;
+      padding: 1.1rem 0 1.1rem 3.5rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .talk-item:last-child { border-bottom: none; }
+
+    .talk-year {
+      position: absolute;
+      left: 0;
+      top: 1.2rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      width: 2.75rem;
+      text-align: right;
+    }
+
+    .talk-title {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--ink);
+    }
+
+    .talk-title a {
+      color: var(--accent);
+      font-style: italic;
+    }
+
+    .talk-meta {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin-top: 0.2rem;
+      text-transform: uppercase;
+    }
+
+    footer {
+      border-top: 1px solid var(--rule);
+      padding-top: 1.5rem;
+      text-align: center;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    header  { animation: fadeUp 0.6s ease both; }
+    nav     { animation: fadeUp 0.6s 0.1s ease both; }
+    section { animation: fadeUp 0.6s 0.2s ease both; }
+
+    @media (max-width: 560px) {
+      .name { font-size: 2rem; }
+      .talk-item { padding-left: 2.75rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <div class="name">Benjamin Steinberg</div>
+    <div class="title-line">Distinguished Professor of Mathematics &nbsp;·&nbsp; City College of New York</div>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="https://profbsteinberg-math.github.io/BSteinberg-math.github.io/">Home</a></li>
+      <li><a href="contact2.html">Contact</a></li>
+      <li><a href="pub2.html">Publications</a></li>
+      <li><a href="book2.html">Books</a></li>
+      <li><a href="journals2.html">Editorial Work</a></li>
+      <li><a href="conferences2.html">Conferences</a></li>
+      <li><a href="newvitae.pdf">Curriculum Vitæ</a></li>
+      <li><a href="http://math.sci.ccny.cuny.edu/people?name=Benjamin_Steinberg">Classes</a></li>
+      <li><a href="http://bensteinberg.wordpress.com/author/bsteinbg/">Blog</a></li>
+    </ul>
+  </nav>
+
+  <section>
+    <div class="section-label">Selected Talks</div>
+    <h2>Selected Talks</h2>
+
+    <ul class="talk-list">
+
+      <li class="talk-item">
+        <div class="talk-year">2014</div>
+        <div class="talk-title"><a href="http://www.sci.ccny.cuny.edu/~benjamin/slides/steinbergbrock.pdf">Étale groupoid algebras</a></div>
+        <div class="talk-meta">Fields Workshop on Groups, Rings and Group Rings · St. Catherine, 2014</div>
+      </li>
+
+      <li class="talk-item">
+        <div class="talk-year">2014</div>
+        <div class="talk-title"><a href="http://www.sci.ccny.cuny.edu/~benjamin/slides/pars.pdf">Associative algebras associated to étale groupoids and inverse semigroups</a></div>
+        <div class="talk-meta">Partial Actions and Representations Symposium · Gramado, 2014</div>
+      </li>
+
+      <li class="talk-item">
+        <div class="talk-year">2014</div>
+        <div class="talk-title"><a href="http://www.sci.ccny.cuny.edu/~benjamin/slides/geowalks.pdf">Self-similar semigroups and finite state Markov chains</a></div>
+        <div class="talk-meta">Groups Acting on Rooted Trees and Around · Paris, 2014</div>
+      </li>
+
+      <li class="talk-item">
+        <div class="talk-year">2013</div>
+        <div class="talk-title"><a href="http://www.sci.ccny.cuny.edu/~benjamin/slides/reptheorysession.pdf">Koszul algebras associated to zonotopes and CAT(0) cube complexes</a></div>
+        <div class="talk-meta">Winter CMS Meeting · Ottawa, 2013</div>
+      </li>
+
+      <li class="talk-item">
+        <div class="talk-year">2013</div>
+        <div class="talk-title"><a href="http://www.sci.ccny.cuny.edu/~benjamin/slides/ottawagroups.pdf">On a conjecture of Karrass and Solitar</a></div>
+        <div class="talk-meta">Winter CMS Meeting · Ottawa, 2013</div>
+      </li>
+
+      <li class="talk-item">
+        <div class="talk-year">2013</div>
+        <div class="talk-title"><a href="http://www.sci.ccny.cuny.edu/~benjamin/slides/copenhagen1.pdf">The Karoubi envelope and the classification of Markov-Dyck shifts</a></div>
+        <div class="talk-meta">Workshop: Flow Equivalence of Graphs, Shifts, and C*-algebras · Copenhagen, 2013</div>
+      </li>
+
+      <li class="talk-item">
+        <div class="talk-year">2013</div>
+        <div class="talk-title"><a href="http://www.sci.ccny.cuny.edu/~benjamin/slides/IsraelJune14.pdf">Hyperplane arrangements, flag complexes and monoid cohomology</a></div>
+        <div class="talk-meta">International Conference on Geometric, Combinatorial and Dynamics aspects of Semigroup and Group Theory · Tel Aviv, 2013</div>
+      </li>
+
+      <li class="talk-item">
+        <div class="talk-year">2013</div>
+        <div class="talk-title"><a href="http://www.sci.ccny.cuny.edu/~benjamin/slides/braunschweig.pdf">The Submonoid Membership Problem for Groups</a></div>
+        <div class="talk-meta">Workshop: Questions, Algorithms, and Computations in Abstract Group Theory · Braunschweig, 2013</div>
+      </li>
+
+      <li class="talk-item">
+        <div class="talk-year">2013</div>
+        <div class="talk-title"><a href="http://www.sci.ccny.cuny.edu/~benjamin/slides/synchgrouptalk.pdf">Synchronizing groups: a survey</a></div>
+        <div class="talk-meta">Joint Meetings AMS · San Diego, 2013</div>
+      </li>
+
+      <li class="talk-item">
+        <div class="talk-year">2012</div>
+        <div class="talk-title"><a href="http://www.sci.ccny.cuny.edu/~benjamin/slides/brazil.pdf">Poset cohomology, Leray numbers and the global dimension of left regular bands</a></div>
+        <div class="talk-meta">XXII Escola de Algebra · Bahia, 2012</div>
+      </li>
+
+      <li class="talk-item">
+        <div class="talk-year">2012</div>
+        <div class="talk-title"><a href="http://www.sci.ccny.cuny.edu/~benjamin/slides/amssession.pdf">The submonoid membership problem for groups</a></div>
+        <div class="talk-meta">Joint Meetings AMS · Boston, 2012</div>
+      </li>
+
+      <li class="talk-item">
+        <div class="talk-year">2011</div>
+        <div class="talk-title"><a href="http://www.sci.ccny.cuny.edu/~benjamin/slides/manhattanalgebraday.pdf">Profinite groups associated to symbolic dynamical systems</a></div>
+        <div class="talk-meta">Manhattan Algebra Day · 2011</div>
+      </li>
+
+      <li class="talk-item">
+        <div class="talk-year">2011</div>
+        <div class="talk-title"><a href="http://www.sci.ccny.cuny.edu/~benjamin/slides/stockholm.pdf">Poset cohomology, Leray numbers and the global dimension of left regular bands</a></div>
+        <div class="talk-meta">Stockholm, 2011</div>
+      </li>
+
+      <li class="talk-item">
+        <div class="talk-year">2011</div>
+        <div class="talk-title"><a href="http://www.sci.ccny.cuny.edu/~benjamin/slides/semigrouprepslides.pdf">Quivers of monoids with basic algebras</a></div>
+        <div class="talk-meta">Ottawa, 2011</div>
+      </li>
+
+      <li class="talk-item">
+        <div class="talk-year">2010</div>
+        <div class="talk-title"><a href="http://www.sci.ccny.cuny.edu/~benjamin/slides/DLTtalk2010.pdf">The averaging trick and the Černý conjecture</a></div>
+        <div class="talk-meta">DLT · London, 2010</div>
+      </li>
+
+      <li class="talk-item">
+        <div class="talk-year">2010</div>
+        <div class="talk-title"><a href="http://www.sci.ccny.cuny.edu/~benjamin/slides/groupactionstalk.pdf">Étale groupoids and inverse semigroups</a></div>
+        <div class="talk-meta">Workshop on Groups and Group Actions in Operator Algebra Theory · Ottawa, 2010</div>
+      </li>
+
+      <li class="talk-item">
+        <div class="talk-year">2009</div>
+        <div class="talk-title"><a href="http://www.sci.ccny.cuny.edu/~benjamin/slides/DLTtalk.pdf">Matrix mortality and the Pin-Černý conjecture</a></div>
+        <div class="talk-meta">DLT · Stuttgart, 2009</div>
+      </li>
+
+      <li class="talk-item">
+        <div class="talk-year">2009</div>
+        <div class="talk-title"><a href="http://www.sci.ccny.cuny.edu/~benjamin/slides/nebraska.pdf">Symbolic dynamics, profinite groups and profinite monoids</a></div>
+        <div class="talk-meta">International Conference on Geometric and Combinatorial Methods in Group Theory and Semigroup Theory · Nebraska, 2009</div>
+      </li>
+
+      <li class="talk-item">
+        <div class="talk-year">2009</div>
+        <div class="talk-title"><a href="http://www.sci.ccny.cuny.edu/~benjamin/slides/brno.pdf">Recent progress on the structure of free profinite monoids</a></div>
+        <div class="talk-meta">Workshop: Equational Theory of Regular Languages · Brno, 2009</div>
+      </li>
+
+      <li class="talk-item">
+        <div class="talk-year">2009</div>
+        <div class="talk-title"><a href="http://www.sci.ccny.cuny.edu/~benjamin/slides/munnmeeting.pdf">On the irreducible representations of inverse semigroups</a></div>
+        <div class="talk-meta">Workshop on Groups, Semigroups and Applications · Lisbon, 2009</div>
+      </li>
+
+      <li class="talk-item">
+        <div class="talk-year">2009</div>
+        <div class="talk-title"><a href="http://www.sci.ccny.cuny.edu/~benjamin/slides/semiringslides.pdf">Decomposition theorems for semirings and the Krohn-Rhodes complexity of power semigroups</a></div>
+        <div class="talk-meta">Leipzig, 2009</div>
+      </li>
+
+      <li class="talk-item">
+        <div class="talk-year">2008</div>
+        <div class="talk-title"><a href="http://www.sci.ccny.cuny.edu/~benjamin/slides/SATA.pdf">The Černý conjecture and group representations</a></div>
+        <div class="talk-meta">SATA · Lisbon, 2008</div>
+      </li>
+
+      <li class="talk-item">
+        <div class="talk-year">2007</div>
+        <div class="talk-title"><a href="http://www.sci.ccny.cuny.edu/~benjamin/slides/israeltalk.pdf">Möbius functions and semigroup representation theory</a></div>
+        <div class="talk-meta">Conference on Representations of Algebras, Groups and Semigroups · Tel Aviv, 2007</div>
+      </li>
+
+    </ul>
+  </section>
+
+  <footer>
+    Benjamin Steinberg &nbsp;·&nbsp; Department of Mathematics &nbsp;·&nbsp; City College of New York
+  </footer>
+
+</div>
+</body>
+</html>
