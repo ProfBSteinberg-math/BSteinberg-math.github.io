@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="Author" content="Benjamin Steinberg">
+  <meta name="Keywords" content="Benjamin Steinberg, mathematics, semigroups, groups, monoids, automata">
+  <meta name="Description" content="Conference organization by Benjamin Steinberg, Distinguished Professor of Mathematics at City College of New York.">
+  <title>Benjamin Steinberg — Conferences</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #1a1a1a;
+      --paper: #f9f6f0;
+      --cream: #f0ead8;
+      --rule: #c8bfa8;
+      --accent: #5c3d1e;
+      --accent-light: #8a6040;
+      --muted: #7a7060;
+      --highlight: #e8dcc8;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 1.05rem;
+      line-height: 1.75;
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: '';
+      display: block;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent) 0%, var(--accent-light) 50%, var(--accent) 100%);
+    }
+
+    .page {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 2rem 4rem;
+    }
+
+    /* ── Header ── */
+    header {
+      padding: 3.5rem 0 2rem;
+      border-bottom: 1px solid var(--rule);
+      margin-bottom: 0;
+    }
+
+    .name {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 2.6rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: var(--accent);
+      line-height: 1.1;
+      margin-bottom: 0.25rem;
+    }
+
+    .title-line {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      font-weight: 300;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ── Nav ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: var(--cream);
+      border-bottom: 1px solid var(--rule);
+      border-top: 1px solid var(--rule);
+      padding: 0.75rem 2rem;
+      margin: 0 -2rem 3rem;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.25rem 0.1rem;
+    }
+
+    nav li a {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      text-decoration: none;
+      padding: 0.3rem 0.75rem;
+      border-radius: 2px;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    nav li a:hover, nav li a.active {
+      background: var(--highlight);
+      color: var(--ink);
+    }
+
+    nav li + li::before {
+      content: '·';
+      color: var(--rule);
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+
+    /* ── Sections ── */
+    section { margin-bottom: 3.5rem; }
+
+    .section-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--rule);
+    }
+
+    .subsection-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 2.5rem 0 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .subsection-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--rule);
+      opacity: 0.5;
+    }
+
+    h2 {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+
+    p { margin-bottom: 1rem; color: var(--ink); }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+
+    a:hover { border-bottom-color: var(--accent-light); }
+
+    /* ── Conference list ── */
+    .conf-list {
+      list-style: none;
+    }
+
+    .conf-item {
+      position: relative;
+      padding: 1.25rem 0 1.25rem 3.5rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .conf-item:last-child { border-bottom: none; }
+
+    .conf-year {
+      position: absolute;
+      left: 0;
+      top: 1.35rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      width: 2.75rem;
+      text-align: right;
+    }
+
+    .conf-title {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--ink);
+    }
+
+    .conf-title a {
+      color: var(--accent);
+    }
+
+    .conf-meta {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin-top: 0.2rem;
+      text-transform: uppercase;
+    }
+
+    sup {
+      font-size: 0.6em;
+      vertical-align: super;
+    }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--rule);
+      padding-top: 1.5rem;
+      text-align: center;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    /* ── Animations ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    header  { animation: fadeUp 0.6s ease both; }
+    nav     { animation: fadeUp 0.6s 0.1s ease both; }
+    section { animation: fadeUp 0.6s 0.2s ease both; }
+
+    @media (max-width: 560px) {
+      .name { font-size: 2rem; }
+      .conf-item { padding-left: 2.75rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <div class="name">Benjamin Steinberg</div>
+    <div class="title-line">Distinguished Professor of Mathematics &nbsp;·&nbsp; City College of New York</div>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="https://profbsteinberg-math.github.io/BSteinberg-math.github.io/">Home</a></li>
+      <li><a href="contact2.html">Contact</a></li>
+      <li><a href="pub2.html">Publications</a></li>
+      <li><a href="book2.html">Books</a></li>
+      <li><a href="journals2.html">Editorial Work</a></li>
+      <li><a href="conferences2.html" class="active">Conferences</a></li>
+      <li><a href="newvitae.pdf">Curriculum Vitæ</a></li>
+      <li><a href="http://math.sci.ccny.cuny.edu/people?name=Benjamin_Steinberg">Classes</a></li>
+      <li><a href="http://bensteinberg.wordpress.com/author/bsteinbg/">Blog</a></li>
+    </ul>
+  </nav>
+
+  <section>
+    <div class="section-label">Conference Organization</div>
+    <h2>Conference Organization</h2>
+
+    <!-- Past conferences -->
+    <ul class="conf-list">
+
+      <li class="conf-item">
+        <div class="conf-year">2026</div>
+        <div class="conf-title">
+          Co-organizer of <a href="https://gagta.org/">GAGTA 2026: Geometric and Asymptotic Group Theory with Applications</a>.
+        </div>
+        <div class="conf-meta">June 1–5, 2026 · New York</div>
+      </li>
+
+      <li class="conf-item">
+        <div class="conf-year">2022</div>
+        <div class="conf-title">
+          Co-organizer with M. Kinyon of "Special Session on Recent Trends in Semigroup Theory" of the Spring Western Sectional Meeting of the American Mathematical Society.
+        </div>
+        <div class="conf-meta">May 2022</div>
+      </li>
+
+      <li class="conf-item">
+        <div class="conf-year">2021</div>
+        <div class="conf-title">
+          Member of the Scientific Committee for Young Geometric Group Theory X, Newcastle University, UK.
+        </div>
+        <div class="conf-meta">April 2021 · Newcastle University</div>
+      </li>
+
+      <li class="conf-item">
+        <div class="conf-year">2020</div>
+        <div class="conf-title">
+          Member of the Program Committee for Jewels of Automata: from Mathematics to Applications (AutoMathA 2020).
+        </div>
+        <div class="conf-meta">October 2020 · Paris, France</div>
+      </li>
+
+      <li class="conf-item">
+        <div class="conf-year">2020</div>
+        <div class="conf-title">
+          Member of the Program Committee for LATA 2020 (14th International Conference on Language and Automata Theory and Applications).
+        </div>
+        <div class="conf-meta">March 2020 · Milan, Italy</div>
+      </li>
+
+      <li class="conf-item">
+        <div class="conf-year">2020</div>
+        <div class="conf-title">
+          Co-organizer with M. Kinyon of "Special Session on Recent Trends in Semigroup Theory" of the Joint Mathematical Meetings.
+        </div>
+        <div class="conf-meta">January 2020</div>
+      </li>
+
+      <li class="conf-item">
+        <div class="conf-year">2018</div>
+        <div class="conf-title">
+          Co-organizer with G. Bzerman, J. Funk, P. Hofstra and N. Yanofsky of <a href="https://ct-octoberfest.github.io">Category Theory Octoberfest 2018</a>.
+        </div>
+        <div class="conf-meta">October 2018</div>
+      </li>
+
+      <li class="conf-item">
+        <div class="conf-year">2013</div>
+        <div class="conf-title">
+          Co-organizer with J. Meakin, E. Plotkin, M. Sapir, G. Soifer and P. Weil of an <a href="http://www.math.vanderbilt.edu/~msapir/stuart/main.html">International Conference on Geometric, Combinatorial and Dynamics aspects of Semigroup and Group Theory</a>, in honor of the 60<sup>th</sup> birthday of Stuart Margolis.
+        </div>
+        <div class="conf-meta">June 2013</div>
+      </li>
+
+      <li class="conf-item">
+        <div class="conf-year">2013</div>
+        <div class="conf-title">
+          Co-organizer with O. Kharlampovich, A. Miasnikov and V. Shpilrain of <a href="http://www.stevens.edu/algebraic/GAGTA/index.htm">GAGTA 2013: Geometric and Asymptotic Group Theory with Applications</a>.
+        </div>
+        <div class="conf-meta">May 2013</div>
+      </li>
+
+      <li class="conf-item">
+        <div class="conf-year">2012</div>
+        <div class="conf-title">
+          Co-organizer with M. Can, Z. Li and S. Wang of the Fields Institute Workshop on <a href="http://www.fields.utoronto.ca/programs/scientific/12-13/monoids/">Algebraic Monoids, Group Embeddings and Algebraic Combinatorics</a>.
+        </div>
+        <div class="conf-meta">July 2012 · Fields Institute</div>
+      </li>
+
+      <li class="conf-item">
+        <div class="conf-year">2010</div>
+        <div class="conf-title">
+          Co-organizer of <a href="http://www.crm.umontreal.ca/Semi10/index_e.php">Topics in Algorithmic and Geometric Group and Semigroup Theory</a>, a workshop in the CRM thematic semester "Geometric, Combinatorial and Computational Group Theory".
+        </div>
+        <div class="conf-meta">August 2010 · CRM, Montréal</div>
+      </li>
+
+      <li class="conf-item">
+        <div class="conf-year">2010</div>
+        <div class="conf-title">
+          Co-organizer with P. Hofstra and J. Funk of the Fields Institute sponsored <a href="http://www.fields.utoronto.ca/programs/scientific/09-10/semigroups/index.html">Workshop on Semigroups and Categories</a>.
+        </div>
+        <div class="conf-meta">May 2010 · Ottawa</div>
+      </li>
+
+      <li class="conf-item">
+        <div class="conf-year">2008</div>
+        <div class="conf-title">
+          Co-organizer with M. Neufang of the <a href="http://www.math.ca/Events/winter08/">Canadian Mathematical Society Winter Meeting 2008</a>.
+        </div>
+        <div class="conf-meta">December 2008 · Ottawa</div>
+      </li>
+
+      <li class="conf-item">
+        <div class="conf-year">2008</div>
+        <div class="conf-title">
+          Co-organizer with R. Grigorchuk and Z. Sunik of <a href="http://www.birs.ca/birspages.php?task=displayevent&event_id=08w5066">Self-Similarity and Branching in Group Theory</a>.
+        </div>
+        <div class="conf-meta">October 2008 · Banff International Research Station</div>
+      </li>
+
+      <li class="conf-item">
+        <div class="conf-year">2008</div>
+        <div class="conf-title">
+          Co-organizer with E. Neher and V. Dlab of the Fields Institute sponsored <a href="http://www.fields.utoronto.ca/programs/scientific/08-09/algebraweek/">Algebra Week</a>.
+        </div>
+        <div class="conf-meta">September 2008 · Fields Institute</div>
+      </li>
+
+      <li class="conf-item">
+        <div class="conf-year">2007</div>
+        <div class="conf-title">
+          Co-organizer with L. Renner of a special session on <a href="http://math.ca/Events/winter07/sessions_scientific">Algebraic Combinatorics, Representations and Geometry</a> at the Winter 2007 Meeting of the Canadian Mathematical Society.
+        </div>
+        <div class="conf-meta">December 2007</div>
+      </li>
+
+      <li class="conf-item">
+        <div class="conf-year">2006</div>
+        <div class="conf-title">
+          Co-organizer with I. Bumagin of the <a href="http://www.fields.utoronto.ca/programs/scientific/06-07/group_theory/">Workshop on Geometric Methods in Group Theory</a>, sponsored by the <a href="http://www.fields.utoronto.ca">Fields Institute</a>.
+        </div>
+        <div class="conf-meta">August 2006 · Fields Institute</div>
+      </li>
+
+      <li class="conf-item">
+        <div class="conf-year">2005</div>
+        <div class="conf-title">
+          Co-organizer with L. Ribes of the <a href="http://www.fields.utoronto.ca/programs/scientific/05-06/profinite">Workshop on Profinite Groups and Applications</a>, sponsored by the <a href="http://www.fields.utoronto.ca">Fields Institute</a>.
+        </div>
+        <div class="conf-meta">August 2005 · Fields Institute</div>
+      </li>
+
+      <li class="conf-item">
+        <div class="conf-year">2002</div>
+        <div class="conf-title">
+          Co-organizer with S. Margolis of the <a href="http://www.fc.up.pt/cmup/bsteinbg/rf.html">International Conference on Semigroups and Groups in Honor of the 65<sup>th</sup> Birthday of John Rhodes</a>.
+        </div>
+        <div class="conf-meta">July 2002 · University of Porto</div>
+      </li>
+
+    </ul>
+  </section>
+
+  <footer>
+    Benjamin Steinberg &nbsp;·&nbsp; Department of Mathematics &nbsp;·&nbsp; City College of New York
+  </footer>
+
+</div>
+</body>
+</html>
