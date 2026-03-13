@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="Author" content="Benjamin Steinberg">
+  <meta name="Keywords" content="Benjamin Steinberg, mathematics, semigroups, groups, monoids, automata">
+  <meta name="Description" content="Benjamin Steinberg — mathematician at CUNY, working on semigroups, geometric group theory, representation theory, and more.">
+  <title>Benjamin Steinberg — Mathematician</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #1a1a1a;
+      --paper: #f9f6f0;
+      --cream: #f0ead8;
+      --rule: #c8bfa8;
+      --accent: #5c3d1e;
+      --accent-light: #8a6040;
+      --muted: #7a7060;
+      --highlight: #e8dcc8;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { font-size: 16px; scroll-behavior: smooth; }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 1.05rem;
+      line-height: 1.75;
+      min-height: 100vh;
+    }
+
+    /* Decorative top rule */
+    body::before {
+      content: '';
+      display: block;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent) 0%, var(--accent-light) 50%, var(--accent) 100%);
+    }
+
+    /* ── Layout ── */
+    .page {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 2rem 4rem;
+    }
+
+    /* ── Header ── */
+    header {
+      padding: 3.5rem 0 2rem;
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 2.5rem;
+      align-items: start;
+      border-bottom: 1px solid var(--rule);
+      margin-bottom: 3rem;
+    }
+
+    .photo-frame {
+      position: relative;
+    }
+
+    .photo-frame img {
+      width: 100%;
+      display: block;
+      border: 1px solid var(--rule);
+      filter: sepia(8%) contrast(1.04);
+    }
+
+    .photo-frame::after {
+      content: '';
+      position: absolute;
+      inset: 6px -6px -6px 6px;
+      border: 1px solid var(--rule);
+      z-index: -1;
+    }
+
+    .header-text {
+      padding-top: 0.5rem;
+    }
+
+    .name {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 2.6rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: var(--accent);
+      line-height: 1.1;
+      margin-bottom: 0.25rem;
+    }
+
+    .title-line {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      font-weight: 300;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .header-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1.5rem;
+      margin-top: 1.2rem;
+    }
+
+    .header-links a {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid var(--accent-light);
+      padding-bottom: 1px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .header-links a:hover {
+      color: var(--ink);
+      border-color: var(--ink);
+    }
+
+    /* ── Nav ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: var(--cream);
+      border-bottom: 1px solid var(--rule);
+      border-top: 1px solid var(--rule);
+      padding: 0.75rem 0;
+      margin: 0 -2rem 3rem;
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.25rem 0.1rem;
+    }
+
+    nav li a {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      text-decoration: none;
+      padding: 0.3rem 0.75rem;
+      border-radius: 2px;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    nav li a:hover {
+      background: var(--highlight);
+      color: var(--ink);
+    }
+
+    nav li + li::before {
+      content: '·';
+      color: var(--rule);
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+
+    /* ── Sections ── */
+    section {
+      margin-bottom: 3.5rem;
+    }
+
+    .section-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--rule);
+    }
+
+    h2 {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+      color: var(--ink);
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+
+    a:hover {
+      border-bottom-color: var(--accent-light);
+    }
+
+    /* ── Research interests card ── */
+    .interest-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 0.75rem;
+      margin-top: 1.25rem;
+    }
+
+    .interest-tag {
+      background: var(--cream);
+      border: 1px solid var(--rule);
+      padding: 0.6rem 1rem;
+      font-size: 0.88rem;
+      color: var(--accent);
+      font-style: italic;
+    }
+
+    /* ── Quick links ── */
+    .quick-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1.25rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--paper);
+      background: var(--accent);
+      border: 1px solid var(--accent);
+      padding: 0.55rem 1.1rem;
+      text-decoration: none;
+      border-bottom: none;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .btn:hover {
+      background: var(--ink);
+      border-color: var(--ink);
+      border-bottom: none;
+    }
+
+    .btn-ghost {
+      color: var(--accent);
+      background: transparent;
+      border: 1px solid var(--accent);
+    }
+
+    .btn-ghost:hover {
+      background: var(--accent);
+      color: var(--paper);
+    }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--rule);
+      padding-top: 1.5rem;
+      text-align: center;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    /* ── Animations ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    header { animation: fadeUp 0.6s ease both; }
+    nav    { animation: fadeUp 0.6s 0.1s ease both; }
+    section { animation: fadeUp 0.6s 0.2s ease both; }
+
+    /* ── Responsive ── */
+    @media (max-width: 620px) {
+      header { grid-template-columns: 1fr; }
+      .photo-frame { max-width: 160px; }
+      .name { font-size: 2rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ── Header ── -->
+  <header>
+    <div class="photo-frame">
+      <img src="IMG_5006.JPG" alt="Benjamin Steinberg">
+    </div>
+    <div class="header-text">
+      <div class="name">Benjamin Steinberg</div>
+      <div class="title-line">Professor of Mathematics &nbsp;·&nbsp; City College of New York</div>
+      <p style="font-size:0.97rem; color:var(--muted); font-style:italic; margin-bottom:0.5rem;">
+        Distinguished Professor &nbsp;·&nbsp; Ph.D., <a href="http://math.berkeley.edu/" style="color:var(--muted)">University of California, Berkeley</a>
+      </p>
+      <div class="header-links">
+        <a href="newvitae.pdf" target="_top">Curriculum Vitae (PDF)</a>
+        <a href="http://bensteinberg.wordpress.com/author/bsteinbg/" target="_top">Blog</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── Nav ── -->
+  <nav>
+    <ul>
+      <li><a href="https://profbsteinberg-math.github.io/BSteinberg-math.github.io/">Home</a></li>
+      <li><a href="contact2.html">Contact</a></li>
+      <li><a href="pub2.html">Publications</a></li>
+      <li><a href="book2.html">Books</a></li>
+      <li><a href="journals2.html">Editorial Work</a></li>
+      <li><a href="conferences2.html">Conferences</a></li>
+      <li><a href="newvitae.pdf">Curriculum Vitæ</a></li>
+      <li><a href="http://math.sci.ccny.cuny.edu/people?name=Benjamin_Steinberg">Classes</a></li>
+      <li><a href="http://bensteinberg.wordpress.com/author/bsteinbg/">Blog</a></li>
+    </ul>
+  </nav>
+
+  <!-- ── About ── -->
+  <section id="about">
+    <div class="section-label">About</div>
+    <h2>About Me</h2>
+    <p>
+      I am a Distinguished Professor in the <a href="http://math.sci.ccny.cuny.edu/">Mathematics Department</a> of the <a href="http://www.ccny.cuny.edu/">City College of New York</a> and the <a href="http://www.gc.cuny.edu/Page-Elements/Academics-Research-Centers-Initiatives/Doctoral-Programs/Mathematics">CUNY Graduate Center</a>.
+    </p>
+    <p>
+      I received my Ph.D. at the <a href="http://math.berkeley.edu/">University of California at Berkeley</a>. I am an algebraist interested in a broad range of areas including semigroups, geometric group theory, algebraic combinatorics and representation theory.
+    </p>
+    <p>
+      Some of my other research interests include automata theory, finite state Markov chains and algebras associated to étale groupoids.
+    </p>
+    <div class="quick-links">
+      <a class="btn" href="newvitae.pdf" target="_top">↓ Download CV</a>
+      <a class="btn btn-ghost" href="http://bensteinberg.wordpress.com/author/bsteinbg/" target="_top">Visit Blog →</a>
+    </div>
+  </section>
+
+  <!-- ── Research ── -->
+  <section id="research">
+    <div class="section-label">Research Interests</div>
+    <h2>Areas of Work</h2>
+    <p>My research touches on a wide spectrum of algebraic and combinatorial structures, with an eye toward computational and algorithmic applications.</p>
+    <div class="interest-grid">
+      <div class="interest-tag">Semigroup Theory</div>
+      <div class="interest-tag">Geometric Group Theory</div>
+      <div class="interest-tag">Representation Theory</div>
+      <div class="interest-tag">Automaton Groups</div>
+      <div class="interest-tag">Automata Theory</div>
+      <div class="interest-tag">Profinite Groups</div>
+      <div class="interest-tag">Random Walks</div>
+      <div class="interest-tag">Étale Groupoids</div>
+      <div class="interest-tag">Inverse Semigroups</div>
+      <div class="interest-tag">Markov Chains</div>
+      <div class="interest-tag">C*-Algebras</div>
+      <div class="interest-tag">Algorithmic Questions</div>
+    </div>
+  </section>
+
+  <footer>
+    Benjamin Steinberg &nbsp;·&nbsp; Department of Mathematics &nbsp;·&nbsp; City College of New York
+  </footer>
+
+</div>
+</body>
+</html>
