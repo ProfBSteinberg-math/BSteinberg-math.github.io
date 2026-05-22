@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GAGTA 2026 – Schedule</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cormorant+SC:wght@400;500;600&display=swap');
+
+  :root {
+    --ink: #1a1512;
+    --accent: #7a3b1e;
+    --rule: #b5956a;
+    --bg: #faf7f2;
+    --card-bg: #ffffff;
+    --muted: #5c4a35;
+    --border-light: #e0d4c0;
+    --break-bg: #f0ebe2;
+    --day-header: #7a3b1e;
+    --workshop-a: #2c4a6e;
+    --workshop-b: #3a5c3a;
+    --link: #7a3b1e;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--ink);
+    background-color: var(--bg);
+    padding: 3rem 1.5rem 5rem;
+  }
+
+  header {
+    text-align: center;
+    padding-bottom: 2.5rem;
+    margin-bottom: 3rem;
+    border-bottom: 2px solid var(--rule);
+  }
+
+  header h1 {
+    font-family: 'Cormorant SC', 'EB Garamond', serif;
+    font-size: 2.4rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    color: var(--accent);
+    margin-bottom: 0.4rem;
+  }
+
+  header p.subtitle {
+    font-size: 1.05rem;
+    color: var(--muted);
+    font-style: italic;
+    letter-spacing: 0.02em;
+  }
+
+  header p.schedule-label {
+    font-family: 'Cormorant SC', serif;
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--accent);
+    letter-spacing: 0.06em;
+    margin-top: 0.3rem;
+    font-style: normal;
+  }
+
+  .days-container {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .day-block {
+    background: var(--card-bg);
+    border: 1px solid var(--border-light);
+    border-radius: 2px;
+    box-shadow: 0 1px 4px rgba(90,60,20,0.07);
+    overflow: hidden;
+  }
+
+  .day-header {
+    background: var(--day-header);
+    color: #fff;
+    font-family: 'Cormorant SC', serif;
+    font-size: 1.15rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    padding: 0.7rem 1.5rem;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  tr.session td {
+    padding: 0.55rem 1.5rem;
+    vertical-align: top;
+  }
+
+  tr.session:nth-child(even) td {
+    background: #fdf9f4;
+  }
+
+  td.time {
+    white-space: nowrap;
+    color: var(--muted);
+    font-size: 0.95rem;
+    width: 13%;
+    padding-right: 1rem;
+    font-style: italic;
+  }
+
+  td.speaker {
+    width: 52%;
+    font-size: 1rem;
+  }
+
+  td.location {
+    width: 35%;
+    color: var(--muted);
+    font-size: 0.92rem;
+    font-style: italic;
+  }
+
+  a.speaker-link {
+    color: var(--link);
+    text-decoration: none;
+    border-bottom: 1px solid #c9a97a;
+    transition: color 0.15s, border-color 0.15s;
+  }
+
+  a.speaker-link:hover {
+    color: #4a1e08;
+    border-color: #4a1e08;
+  }
+
+  tr.break td {
+    padding: 0.35rem 1.5rem;
+    background: var(--break-bg);
+    color: var(--muted);
+    font-style: italic;
+    font-size: 0.93rem;
+    text-align: center;
+    border-top: 1px solid var(--border-light);
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  tr.special td {
+    padding: 0.45rem 1.5rem;
+    background: #ece6dc;
+    color: var(--ink);
+    font-style: italic;
+    font-size: 0.95rem;
+    border-top: 1px solid var(--border-light);
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  /* Parallel workshops */
+  .workshops-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border-top: 1px solid var(--border-light);
+  }
+
+  .workshop-block {
+    padding: 0;
+  }
+
+  .workshop-block + .workshop-block {
+    border-left: 1px solid var(--border-light);
+  }
+
+  .workshop-title {
+    padding: 0.5rem 1.2rem;
+    font-family: 'Cormorant SC', serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: #fff;
+  }
+
+  .workshop-block:first-child .workshop-title { background: var(--workshop-a); }
+  .workshop-block:last-child  .workshop-title { background: var(--workshop-b); }
+
+  .workshop-block table { width: 100%; }
+
+  .workshop-block tr.session td {
+    padding: 0.5rem 1.2rem;
+  }
+
+  .workshop-block tr.break td {
+    padding: 0.3rem 1.2rem;
+  }
+
+  .parallel-label {
+    padding: 0.45rem 1.5rem;
+    background: #ece6dc;
+    color: var(--ink);
+    font-style: italic;
+    font-size: 0.95rem;
+    border-top: 1px solid var(--border-light);
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  @media (max-width: 660px) {
+    .workshops-row { grid-template-columns: 1fr; }
+    .workshop-block + .workshop-block { border-left: none; border-top: 1px solid var(--border-light); }
+    td.time { width: auto; }
+    td.location { display: none; }
+    body { padding: 1.5rem 0.8rem 3rem; }
+    header h1 { font-size: 1.8rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>GAGTA 2026</h1>
+  <p class="subtitle">Group Actions and Dynamics</p>
+  <p class="schedule-label">Schedule</p>
+</header>
+
+<div class="days-container">
+
+<!-- ===== DAY 1 ===== -->
+<div class="day-block">
+  <div class="day-header">Day 1</div>
+  <table>
+    <tr class="special"><td colspan="3">8:30 &nbsp;–&nbsp; Registration</td></tr>
+    <tr class="session">
+      <td class="time">9:00 – 9:40</td>
+      <td class="speaker"><a class="speaker-link" href="https://profbsteinberg-math.github.io/BSteinberg-math.github.io/abstracts.html#miasnikov">Alexei Miasnikov</a></td>
+      <td class="location">GC 9205</td>
+    </tr>
+    <tr class="session">
+      <td class="time">9:50 – 10:30</td>
+      <td class="speaker">Marco Linton</td>
+      <td class="location">GC 9205</td>
+    </tr>
+    <tr class="break"><td colspan="3">Coffee break</td></tr>
+    <tr class="session">
+      <td class="time">11:00 – 11:40</td>
+      <td class="speaker"><a class="speaker-link" href="https://profbsteinberg-math.github.io/BSteinberg-math.github.io/abstracts.html#gray">Robert D. Gray</a></td>
+      <td class="location">GC 9205</td>
+    </tr>
+    <tr class="session">
+      <td class="time">11:50 – 12:30</td>
+      <td class="speaker"><a class="speaker-link" href="https://profbsteinberg-math.github.io/BSteinberg-math.github.io/abstracts.html#grigorchuk">Rostislav Grigorchuk</a></td>
+      <td class="location">GC 9205</td>
+    </tr>
+    <tr class="break"><td colspan="3">Lunch break</td></tr>
+    <tr class="session">
+      <td class="time">14:00 – 14:40</td>
+      <td class="speaker">Olga Kharlampovich</td>
+      <td class="location">GC 9205</td>
+    </tr>
+    <tr class="session">
+      <td class="time">14:50 – 15:30</td>
+      <td class="speaker">Dennis Sullivan</td>
+      <td class="location">GC 9205</td>
+    </tr>
+    <tr class="break"><td colspan="3">Coffee break</td></tr>
+    <tr class="session">
+      <td class="time">16:00 – 16:40</td>
+      <td class="speaker"><a class="speaker-link" href="https://profbsteinberg-math.github.io/BSteinberg-math.github.io/abstracts.html#shpilrain">Vladimir Shpilrain</a></td>
+      <td class="location">GC 9205</td>
+    </tr>
+    <tr class="session">
+      <td class="time">16:50 – 17:30</td>
+      <td class="speaker">Be'eri Greenfeld</td>
+      <td class="location">GC 9205</td>
+    </tr>
+    <tr class="special"><td colspan="3">Reception and poster session</td></tr>
+  </table>
+</div>
+
+<!-- ===== DAY 2 ===== -->
+<div class="day-block">
+  <div class="day-header">Day 2 &nbsp;·&nbsp; Dynamics Day</div>
+  <table>
+    <tr class="session">
+      <td class="time">9:00 – 9:40</td>
+      <td class="speaker"><a class="speaker-link" href="https://profbsteinberg-math.github.io/BSteinberg-math.github.io/abstracts.html#wolf">Christian Wolf</a></td>
+      <td class="location">GC 9205</td>
+    </tr>
+    <tr class="session">
+      <td class="time">9:50 – 10:30</td>
+      <td class="speaker">Mao Shinoda</td>
+      <td class="location">GC 9205</td>
+    </tr>
+    <tr class="break"><td colspan="3">Coffee break</td></tr>
+    <tr class="session">
+      <td class="time">11:00 – 11:40</td>
+      <td class="speaker"><a class="speaker-link" href="https://profbsteinberg-math.github.io/BSteinberg-math.github.io/abstracts.html#jiang">Yunping Jiang</a></td>
+      <td class="location">GC 9205</td>
+    </tr>
+    <tr class="session">
+      <td class="time">11:50 – 12:30</td>
+      <td class="speaker"><a class="speaker-link" href="https://profbsteinberg-math.github.io/BSteinberg-math.github.io/abstracts.html#cantrell">Stephen Cantrell</a></td>
+      <td class="location">GC 9205</td>
+    </tr>
+    <tr class="break"><td colspan="3">Lunch break</td></tr>
+    <tr class="session">
+      <td class="time">14:00 – 14:40</td>
+      <td class="speaker"><a class="speaker-link" href="https://profbsteinberg-math.github.io/BSteinberg-math.github.io/abstracts.html#sharp">Richard Sharp</a></td>
+      <td class="location">GC 9205</td>
+    </tr>
+    <tr class="session">
+      <td class="time">14:50 – 15:30</td>
+      <td class="speaker"><a class="speaker-link" href="https://profbsteinberg-math.github.io/BSteinberg-math.github.io/abstracts.html#ceccherini">Tullio Ceccherini-Silberstein</a></td>
+      <td class="location">GC 9205</td>
+    </tr>
+    <tr class="break"><td colspan="3">Coffee break</td></tr>
+    <tr class="session">
+      <td class="time">16:00 – 16:40</td>
+      <td class="speaker">Chikako Mese</td>
+      <td class="location">GC 9205</td>
+    </tr>
+    <tr class="session">
+      <td class="time">16:50 – 17:30</td>
+      <td class="speaker"><a class="speaker-link" href="https://profbsteinberg-math.github.io/BSteinberg-math.github.io/abstracts.html#daskalopoulos">Georgios Daskalopoulos</a></td>
+      <td class="location">GC 9205</td>
+    </tr>
+  </table>
+</div>
+
+<!-- ===== DAY 3 ===== -->
+<div class="day-block">
+  <div class="day-header">Day 3</div>
+  <table>
+    <tr class="session">
+      <td class="time">9:00 – 9:40</td>
+      <td class="speaker">Piotr Nowak</td>
+      <td class="location">Science Center</td>
+    </tr>
+    <tr class="session">
+      <td class="time">9:50 – 10:30</td>
+      <td class="speaker">Dmytro Savchuk</td>
+      <td class="location">Science Center</td>
+    </tr>
+    <tr class="break"><td colspan="3">Coffee break</td></tr>
+    <tr class="session">
+      <td class="time">11:00 – 11:40</td>
+      <td class="speaker"><a class="speaker-link" href="https://profbsteinberg-math.github.io/BSteinberg-math.github.io/abstracts.html#kapovich">Ilya Kapovich</a></td>
+      <td class="location">Science Center</td>
+    </tr>
+    <tr class="session">
+      <td class="time">11:50 – 12:30</td>
+      <td class="speaker">Raz Slutzky</td>
+      <td class="location">Science Center</td>
+    </tr>
+    <tr class="break"><td colspan="3">Lunch break</td></tr>
+  </table>
+
+  <div class="parallel-label">14:00 – 17:30 &nbsp;·&nbsp; Parallel workshops</div>
+
+  <div class="workshops-row">
+    <!-- Workshop A: Groups and beyond -->
+    <div class="workshop-block">
+      <div class="workshop-title">Groups and Beyond</div>
+      <table>
+        <tr class="session">
+          <td class="time">14:00 – 14:40</td>
+          <td class="speaker"><a class="speaker-link" href="https://profbsteinberg-math.github.io/BSteinberg-math.github.io/abstracts.html#taback">Jennifer Taback</a></td>
+        </tr>
+        <tr class="session">
+          <td class="time">14:50 – 15:30</td>
+          <td class="speaker"><a class="speaker-link" href="https://profbsteinberg-math.github.io/BSteinberg-math.github.io/abstracts.html#balasubramanya">Sahana Balasubramanya</a></td>
+        </tr>
+        <tr class="break"><td colspan="2">Coffee break</td></tr>
+        <tr class="session">
+          <td class="time">16:00 – 16:40</td>
+          <td class="speaker">Anthony Gaglione</td>
+        </tr>
+        <tr class="session">
+          <td class="time">16:50 – 17:30</td>
+          <td class="speaker">Petra Vanderhei</td>
+        </tr>
+      </table>
+    </div>
+    <!-- Workshop B: Buildings -->
+    <div class="workshop-block">
+      <div class="workshop-title">Buildings</div>
+      <table>
+        <tr class="session">
+          <td class="time">14:00 – 14:40</td>
+          <td class="speaker"><a class="speaker-link" href="https://profbsteinberg-math.github.io/BSteinberg-math.github.io/abstracts.html#xie">Xiangdong Xie</a></td>
+        </tr>
+        <tr class="session">
+          <td class="time">14:50 – 15:30</td>
+          <td class="speaker"><a class="speaker-link" href="https://profbsteinberg-math.github.io/BSteinberg-math.github.io/abstracts.html#herron">Amy Herron</a></td>
+        </tr>
+        <tr class="break"><td colspan="2">Coffee break</td></tr>
+        <tr class="session">
+          <td class="time">16:00 – 16:40</td>
+          <td class="speaker"><a class="speaker-link" href="https://profbsteinberg-math.github.io/BSteinberg-math.github.io/abstracts.html#boyer">Adrien Boyer</a></td>
+        </tr>
+        <tr class="session">
+          <td class="time">16:50 – 17:30</td>
+          <td class="speaker">Jonah Mendel</td>
+        </tr>
+      </table>
+    </div>
+  </div><!-- end workshops-row -->
+</div>
+
+<!-- ===== DAY 4 ===== -->
+<div class="day-block">
+  <div class="day-header">Day 4</div>
+  <table>
+    <tr class="session">
+      <td class="time">9:00 – 9:40</td>
+      <td class="speaker">Sam Corson</td>
+      <td class="location">Science Center</td>
+    </tr>
+    <tr class="session">
+      <td class="time">9:50 – 10:30</td>
+      <td class="speaker">Lev Shneerson</td>
+      <td class="location">Science Center</td>
+    </tr>
+    <tr class="break"><td colspan="3">Coffee break</td></tr>
+    <tr class="session">
+      <td class="time">11:00 – 11:40</td>
+      <td class="speaker">Doron Puder</td>
+      <td class="location">Science Center</td>
+    </tr>
+    <tr class="session">
+      <td class="time">11:50 – 12:30</td>
+      <td class="speaker"><a class="speaker-link" href="https://profbsteinberg-math.github.io/BSteinberg-math.github.io/abstracts.html#ushakov">Alexander Ushakov</a></td>
+      <td class="location">Science Center</td>
+    </tr>
+    <tr class="break"><td colspan="3">Lunch break</td></tr>
+  </table>
+
+  <div class="parallel-label">14:00 – 17:30 &nbsp;·&nbsp; Parallel workshops</div>
+
+  <div class="workshops-row">
+    <!-- Workshop A: Groups, geometry, dynamics -->
+    <div class="workshop-block">
+      <div class="workshop-title">Groups, Geometry, Dynamics</div>
+      <table>
+        <tr class="session">
+          <td class="time">14:00 – 14:40</td>
+          <td class="speaker">Valentina Disarlo</td>
+        </tr>
+        <tr class="session">
+          <td class="time">14:50 – 15:30</td>
+          <td class="speaker"><a class="speaker-link" href="https://profbsteinberg-math.github.io/BSteinberg-math.github.io/abstracts.html#du">Yukun Du</a></td>
+        </tr>
+        <tr class="break"><td colspan="2">Coffee break</td></tr>
+        <tr class="session">
+          <td class="time">16:00 – 16:40</td>
+          <td class="speaker"><a class="speaker-link" href="https://profbsteinberg-math.github.io/BSteinberg-math.github.io/abstracts.html#opazo">Leonardo Dinamarca Opazo</a></td>
+        </tr>
+        <tr class="session">
+          <td class="time">16:50 – 17:30</td>
+          <td class="speaker"><a class="speaker-link" href="https://profbsteinberg-math.github.io/BSteinberg-math.github.io/abstracts.html#wu">Chenxi Wu</a></td>
+        </tr>
+      </table>
+    </div>
+    <!-- Workshop B: Groups, words and graphs -->
+    <div class="workshop-block">
+      <div class="workshop-title">Groups, Words and Graphs</div>
+      <table>
+        <tr class="session">
+          <td class="time">14:00 – 14:40</td>
+          <td class="speaker"><a class="speaker-link" href="https://profbsteinberg-math.github.io/BSteinberg-math.github.io/abstracts.html#oconnor">Siobhán O'Connor</a></td>
+        </tr>
+        <tr class="session">
+          <td class="time">14:50 – 15:30</td>
+          <td class="speaker"><a class="speaker-link" href="https://profbsteinberg-math.github.io/BSteinberg-math.github.io/abstracts.html#mckemmie">Eilidh McKemmie</a></td>
+        </tr>
+        <tr class="break"><td colspan="2">Coffee break</td></tr>
+        <tr class="session">
+          <td class="time">16:00 – 16:40</td>
+          <td class="speaker">Ali Abid</td>
+        </tr>
+        <tr class="session">
+          <td class="time">16:50 – 17:30</td>
+          <td class="speaker"><a class="speaker-link" href="https://profbsteinberg-math.github.io/BSteinberg-math.github.io/abstracts.html#chaudhary">Maksym Chaudhary</a></td>
+        </tr>
+      </table>
+    </div>
+  </div><!-- end workshops-row -->
+</div>
+
+<!-- ===== DAY 5 ===== -->
+<div class="day-block">
+  <div class="day-header">Day 5</div>
+  <table>
+    <tr class="session">
+      <td class="time">9:00 – 9:40</td>
+      <td class="speaker"><a class="speaker-link" href="https://profbsteinberg-math.github.io/BSteinberg-math.github.io/abstracts.html#behrstock">Jason Behrstock</a></td>
+      <td class="location">Science Center</td>
+    </tr>
+    <tr class="session">
+      <td class="time">9:50 – 10:30</td>
+      <td class="speaker">Maria Sabitova</td>
+      <td class="location">Science Center</td>
+    </tr>
+    <tr class="break"><td colspan="3">Coffee break</td></tr>
+    <tr class="session">
+      <td class="time">11:00 – 11:40</td>
+      <td class="speaker"><a class="speaker-link" href="https://profbsteinberg-math.github.io/BSteinberg-math.github.io/abstracts.html#carbone">Lisa Carbone</a></td>
+      <td class="location">Science Center</td>
+    </tr>
+    <tr class="session">
+      <td class="time">11:50 – 12:30</td>
+      <td class="speaker">Francis Wagner</td>
+      <td class="location">Science Center</td>
+    </tr>
+    <tr class="special"><td colspan="3">Problem session / Closing remarks</td></tr>
+  </table>
+</div>
+
+</div><!-- end .days-container -->
+
+</body>
+</html>
