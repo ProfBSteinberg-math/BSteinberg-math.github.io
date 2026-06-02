@@ -241,12 +241,58 @@
   }
 
   @media (max-width: 660px) {
-    .workshops-row { grid-template-columns: 1fr; }
-    .workshop-block + .workshop-block { border-left: none; border-top: 1px solid var(--border-light); }
-    td.time { width: auto; }
-    td.location { display: none; }
+    .workshops-header {
+      grid-template-columns: 1fr;
+    }
+
+    .workshops-table {
+      display: none;
+    }
+
+    .workshops-mobile {
+      display: block;
+    }
+
+    .workshop-mobile-block {
+      width: 100%;
+    }
+
+    .workshop-mobile-block table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+    }
+
+    .workshop-mobile-block td {
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      vertical-align: middle;
+    }
+
+    td.ws-time { white-space: nowrap; color: var(--muted); font-style: italic; font-size: 0.93rem; width: 38%; }
+    td.ws-break-mobile { padding: 0.35rem 1rem; background: var(--break-bg); color: var(--muted); font-style: italic; font-size: 0.93rem; text-align: center; border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light); }
+
+    .workshop-mobile-title {
+      padding: 0.5rem 1rem;
+      font-family: 'Cormorant SC', serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: #fff;
+    }
+
+    .workshop-mobile-block:first-child .workshop-mobile-title { background: var(--workshop-a); }
+    .workshop-mobile-block:last-child  .workshop-mobile-title { background: var(--workshop-b); }
+
     body { padding: 1.5rem 0.8rem 3rem; }
     header h1 { font-size: 1.8rem; }
+    td.time { width: auto; }
+    td.time, td.speaker, td.location { font-size: 0.88rem; padding: 0.45rem 0.6rem; }
+    td.location { font-size: 0.82rem; }
+  }
+
+  @media (min-width: 661px) {
+    .workshops-mobile { display: none; }
   }
 </style>
 </head>
@@ -480,7 +526,30 @@
       </tr>
     </table>
   </div><!-- end workshops-wrapper -->
-</div>
+
+  <div class="workshops-mobile">
+    <div class="workshop-mobile-block">
+      <div class="workshop-mobile-title">Groups and Beyond &nbsp;·&nbsp; Science Center</div>
+      <table>
+        <tr><td class="ws-time">14:00 – 14:40</td><td><a class="speaker-link" href="https://profbsteinberg-math.github.io/BSteinberg-math.github.io/abstracts.html#taback">Jennifer Taback</a></td></tr>
+        <tr><td class="ws-time">14:50 – 15:30</td><td><a class="speaker-link" href="https://profbsteinberg-math.github.io/BSteinberg-math.github.io/abstracts.html#balasubramanya">Sahana Balasubramanya</a></td></tr>
+        <tr><td class="ws-break-mobile" colspan="2">Coffee break</td></tr>
+        <tr><td class="ws-time">16:00 – 16:40</td><td><a class="speaker-link" href="https://profbsteinberg-math.github.io/BSteinberg-math.github.io/abstracts.html#gaglione">Anthony Gaglione</a></td></tr>
+        <tr><td class="ws-time">16:50 – 17:30</td><td></td></tr>
+      </table>
+    </div>
+    <div class="workshop-mobile-block">
+      <div class="workshop-mobile-title">Buildings &nbsp;·&nbsp; Mathematics Lounge</div>
+      <table>
+        <tr><td class="ws-time">14:00 – 14:40</td><td><a class="speaker-link" href="https://profbsteinberg-math.github.io/BSteinberg-math.github.io/abstracts.html#xie">Xiangdong Xie</a></td></tr>
+        <tr><td class="ws-time">14:50 – 15:30</td><td><a class="speaker-link" href="https://profbsteinberg-math.github.io/BSteinberg-math.github.io/abstracts.html#herron">Amy Herron</a></td></tr>
+        <tr><td class="ws-break-mobile" colspan="2">Coffee break</td></tr>
+        <tr><td class="ws-time">16:00 – 16:40</td><td><a class="speaker-link" href="https://profbsteinberg-math.github.io/BSteinberg-math.github.io/abstracts.html#boyer">Adrien Boyer</a></td></tr>
+        <tr><td class="ws-time">16:50 – 17:30</td><td><a class="speaker-link" href="https://profbsteinberg-math.github.io/BSteinberg-math.github.io/abstracts.html#mendel">Jonah Mendel</a></td></tr>
+      </table>
+    </div>
+  </div><!-- end workshops-mobile Day 3 -->
+</div><!-- end Day 3 day-block -->
 
 <!-- ===== DAY 4 ===== -->
 <div class="day-block">
@@ -558,7 +627,31 @@
       </tr>
     </table>
   </div><!-- end workshops-wrapper -->
-</div>
+
+  <div class="workshops-mobile">
+    <div class="workshop-mobile-block">
+      <div class="workshop-mobile-title">Groups, Geometry, Dynamics &nbsp;·&nbsp; Science Center</div>
+      <table>
+        <tr><td class="ws-time">14:00 – 14:40</td><td><a class="speaker-link" href="https://profbsteinberg-math.github.io/BSteinberg-math.github.io/abstracts.html#nucinkis">Brita Nucinkis</a> (ZOOM)</td></tr>
+        <tr><td class="ws-time">14:50 – 15:30</td><td><a class="speaker-link" href="https://profbsteinberg-math.github.io/BSteinberg-math.github.io/abstracts.html#du">Yukun Du</a></td></tr>
+        <tr><td class="ws-break-mobile" colspan="2">Coffee break</td></tr>
+        <tr><td class="ws-time">16:00 – 16:40</td><td><a class="speaker-link" href="https://profbsteinberg-math.github.io/BSteinberg-math.github.io/abstracts.html#opazo">Leonardo Dinamarca Opazo</a></td></tr>
+        <tr><td class="ws-time">16:50 – 17:30</td><td><a class="speaker-link" href="https://profbsteinberg-math.github.io/BSteinberg-math.github.io/abstracts.html#wu">Chenxi Wu</a></td></tr>
+      </table>
+    </div>
+    <div class="workshop-mobile-block">
+      <div class="workshop-mobile-title">Groups, Words and Graphs &nbsp;·&nbsp; Mathematics Lounge</div>
+      <table>
+        <tr><td class="ws-time">14:00 – 14:20</td><td><a class="speaker-link" href="https://profbsteinberg-math.github.io/BSteinberg-math.github.io/abstracts.html#oconnor">Siobhán O'Connor</a></td></tr>
+        <tr><td class="ws-time">14:20 – 14:40</td><td><a class="speaker-link" href="https://profbsteinberg-math.github.io/BSteinberg-math.github.io/abstracts.html#kochhyde">Lucy Koch-Hyde</a></td></tr>
+        <tr><td class="ws-time">14:50 – 15:30</td><td><a class="speaker-link" href="https://profbsteinberg-math.github.io/BSteinberg-math.github.io/abstracts.html#mckemmie">Eilidh McKemmie</a></td></tr>
+        <tr><td class="ws-break-mobile" colspan="2">Coffee break</td></tr>
+        <tr><td class="ws-time">16:00 – 16:40</td><td><a class="speaker-link" href="https://profbsteinberg-math.github.io/BSteinberg-math.github.io/abstracts.html#ali">Abid Ali</a></td></tr>
+        <tr><td class="ws-time">16:50 – 17:30</td><td><a class="speaker-link" href="https://profbsteinberg-math.github.io/BSteinberg-math.github.io/abstracts.html#chaudhary">Maksym Chaudhary</a></td></tr>
+      </table>
+    </div>
+  </div><!-- end workshops-mobile Day 4 -->
+</div><!-- end Day 4 day-block -->
 
 <!-- ===== DAY 5 ===== -->
 <div class="day-block">
