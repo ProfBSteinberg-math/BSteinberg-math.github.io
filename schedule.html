@@ -245,7 +245,7 @@
     header h1 { font-size: 1.8rem; }
     td.time, td.speaker, td.location { font-size: 0.88rem; padding: 0.45rem 0.6rem; }
     td.location { font-size: 0.82rem; }
-    .workshops-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .workshops-wrapper { overflow: visible; }
     .workshops-table { min-width: 480px; }
   }
 
@@ -425,7 +425,7 @@
     </tr>
     <tr class="session">
       <td class="time">9:50 – 10:30</td>
-      <td class="speaker"><a class="speaker-link" href="https://profbsteinberg-math.github.io/BSteinberg-math.github.io/abstracts.html#linton">Marco Linton</a> (Sapir Lecture)</td>
+      <td class="speaker"><a class="speaker-link" href="https://profbsteinberg-math.github.io/BSteinberg-math.github.io/abstracts.html#linton">Marco Linton</a> <span style="font-family:'EB Garamond',serif;font-style:italic;font-size:0.92rem;color:var(--muted);border:none;">(Sapir Lecture)</span></td>
       <td class="location">Elebash Recital Hall (Floor one)</td>
     </tr>
     <tr class="break"><td colspan="3">Coffee break</td></tr>
@@ -445,15 +445,18 @@
   <div class="parallel-label">14:00 – 17:30 &nbsp;·&nbsp; Parallel workshops</div>
 
   <div class="workshops-wrapper">
-    <div class="workshops-header">
-      <div class="workshop-title">Groups and Beyond &nbsp;·&nbsp; Science Center 4102</div>
-      <div class="workshop-title">Buildings &nbsp;·&nbsp; Mathematics Lounge 4214</div>
-    </div>
+    <div class="workshops-scroll" style="overflow-x:auto;-webkit-overflow-scrolling:touch;">
     <table class="workshops-table">
       <colgroup>
         <col class="wcol-time-a"><col class="wcol-name-a">
         <col class="wcol-time-b"><col class="wcol-name-b">
       </colgroup>
+      <thead>
+        <tr>
+          <th colspan="2" class="workshop-title" style="background:var(--workshop-a);text-align:left;">Groups and Beyond &nbsp;·&nbsp; Science Center 4102</th>
+          <th colspan="2" class="workshop-title" style="background:var(--workshop-b);text-align:left;border-left:1px solid rgba(255,255,255,0.2);">Buildings &nbsp;·&nbsp; Mathematics Lounge 4214</th>
+        </tr>
+      </thead>
       <tr class="ws-session">
         <td class="ws-time">14:00 – 14:40</td>
         <td><a class="speaker-link" href="https://profbsteinberg-math.github.io/BSteinberg-math.github.io/abstracts.html#taback">Jennifer Taback</a></td>
@@ -483,6 +486,7 @@
         <td><a class="speaker-link" href="https://profbsteinberg-math.github.io/BSteinberg-math.github.io/abstracts.html#mendel">Jonah Mendel</a></td>
       </tr>
     </table>
+    </div><!-- end workshops-scroll -->
   </div><!-- end workshops-wrapper -->
 </div><!-- end Day 3 day-block -->
 
@@ -517,18 +521,21 @@
   <div class="parallel-label">14:00 – 17:30 &nbsp;·&nbsp; Parallel workshops</div>
 
   <div class="workshops-wrapper">
-    <div class="workshops-header">
-      <div class="workshop-title">Groups, Geometry, Dynamics &nbsp;·&nbsp; Science Center 4102</div>
-      <div class="workshop-title">Groups, Words and Graphs &nbsp;·&nbsp; Mathematics Lounge 4214</div>
-    </div>
+    <div class="workshops-scroll" style="overflow-x:auto;-webkit-overflow-scrolling:touch;">
     <table class="workshops-table">
       <colgroup>
         <col class="wcol-time-a"><col class="wcol-name-a">
         <col class="wcol-time-b"><col class="wcol-name-b">
       </colgroup>
+      <thead>
+        <tr>
+          <th colspan="2" class="workshop-title" style="background:var(--workshop-a);text-align:left;">Groups, Geometry, Dynamics &nbsp;·&nbsp; Science Center 4102</th>
+          <th colspan="2" class="workshop-title" style="background:var(--workshop-b);text-align:left;border-left:1px solid rgba(255,255,255,0.2);">Groups, Words and Graphs &nbsp;·&nbsp; Mathematics Lounge 4214</th>
+        </tr>
+      </thead>
       <tr class="ws-session">
         <td class="ws-time">14:00 – 14:40</td>
-        <td><a class="speaker-link" href="https://profbsteinberg-math.github.io/BSteinberg-math.github.io/abstracts.html#nucinkis">Brita Nucinkis</a> (ZOOM)</td>
+        <td><a class="speaker-link" href="https://profbsteinberg-math.github.io/BSteinberg-math.github.io/abstracts.html#nucinkis">Brita Nucinkis</a> <span style="font-family:'EB Garamond',serif;font-style:italic;font-size:0.92rem;color:var(--muted);border:none;">(ZOOM)</span></td>
         <td class="ws-time ws-divider-left">14:00 – 14:20</td>
         <td><a class="speaker-link" href="https://profbsteinberg-math.github.io/BSteinberg-math.github.io/abstracts.html#oconnor">Siobhán O'Connor</a></td>
       </tr>
@@ -561,6 +568,7 @@
         <td><a class="speaker-link" href="https://profbsteinberg-math.github.io/BSteinberg-math.github.io/abstracts.html#chaudhary">Maksym Chaudhary</a></td>
       </tr>
     </table>
+    </div><!-- end workshops-scroll -->
   </div><!-- end workshops-wrapper -->
 </div><!-- end Day 4 day-block -->
 
